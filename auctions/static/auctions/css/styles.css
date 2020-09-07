@@ -1,0 +1,195 @@
+@import url('https://fonts.googleapis.com/css2?family=BioRhyme:wght@800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,100;1,100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Antic+Slab&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap');
+
+body {
+    padding: 20px;
+    background-color: #393A3B;
+    color: white;
+    overflow-x: hidden;
+    font-family: 'Antic Slab', serif;
+}
+
+.navigation_bar{
+    margin: -20px -20px 0px -20px;
+}
+
+.top_navbar{
+    background-color: #FBEEC1;
+    color: black;
+}
+
+.a_non_link:link, .a_non_link:visited{
+    display: block;
+    text-decoration: none;
+}
+
+.nav_heading:link, .nav_heading:visited{
+    color: #e85a4f;
+    font-family: 'BioRhyme', sans-serif;
+    font-size: 30px;
+}
+
+.dropdown-divider{
+    background-color: #e85a4f;
+    height: 2px;
+}
+
+.navigation_bar_no_user_ul{
+    font-family: 'BioRhyme', sans-serif;
+    font-size: 20px;
+    color: #e85a4f;
+}
+
+.navigation_bar_no_user_a:link, .navigation_bar_no_user_a:visited{
+    color: #393A3B;
+}
+
+.below_navbar{
+    background-color: #edf5e1;
+    font-family: 'IBM Plex Serif', serif;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.navigating_link:link, .navigating_link:visited{
+    color: black;
+    line-height: 1px;
+}
+
+h2{
+    font-family: 'Cinzel', serif;
+    font-size: 40px;
+    font-weight: bold;
+    color: #E85A4F;
+}
+
+/*---------- INDEX PAGE ----------*/
+
+.active_listing_link_box:link, .active_listing_link_box:visited{
+    padding: 40px;
+}
+
+.active_listing_box{
+    background-color: #8ee4af;  /*for red: ee4c7c  da7b93 for Title: EDf5E1*/
+    border: solid #116466;  /*FC4445*/
+    border-radius: 10px;
+    color: #e85a4f;
+    transition: transform .2s;
+    margin: 0 auto;
+    opacity: 0.8;
+}
+
+.active_listing_box:hover{
+    transform: scale(1.075);
+    opacity: 1;
+}
+
+.listing_img_box{
+    border-right: solid #116466;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.listing_img{
+    width: 100%;
+    height: 300px;
+}
+
+.listing_title{
+    font-family: 'BioRhyme', sans-serif;
+    font-size: 50px;
+    color: #e85a4f;
+    text-decoration: underline;
+}
+
+.less_info_div{
+    border-left: solid;
+    border-width: 0.5px;
+    height: 65px;
+    font-family: 'IBM Plex Serif', serif;
+    font-weight: bold;
+}
+
+.less_info_row{
+    height: 20px;
+}
+
+.listing_description{
+    font-family: 'Antic Slab', serif;
+    font-size: 20px;
+}
+
+.listing_price_row{
+    background-color: #e85a4f;
+    color: white;
+}
+
+.listing_price{
+    text-align: center;
+    line-height: 25px;
+    margin-top: 10px;
+    font-family: 'BioRhyme', sans-serif;
+    font-size: 20px;
+}
+
+/*---------- LISTING ----------*/
+
+.listing_box{
+    border: solid;
+}
+
+.item_img_box {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.item_img {
+    width: 100%;
+    transition: 0.5s all ease-in-out;
+}
+
+.item_img:hover {
+    transform: scale(1.2);
+}
+
+.listing_sub_info{
+    font-family: 'IBM Plex Serif', serif;
+    font-weight: bold;
+    margin-top: -25px;
+}
+
+.listing_price_label{
+    font-family: 'BioRhyme', sans-serif;
+    font-size: 18px;
+    color: #e85a4f;
+}
+
+.listing_price{
+    font-size: 18px;
+    color: white;
+}
+
+.interact_button{
+    background-color: #e85a4f;
+    color: white;
+    font-family: 'Antic Slab', serif;
+    border: none;
+    border-radius: 10px;
+    margin-top: 15px;
+}
+.bid_amount_input{
+    width: 200px;
+    border-radius: 10px;
+}
+
+.bid_button{
+    background-color: #e85a4f;
+    color: white;
+    font-family: 'Antic Slab', serif;
+    border: none;
+    border-radius: 10px;
+    margin-top: 5px;
+    width: 200px;
+}

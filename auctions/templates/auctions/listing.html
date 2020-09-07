@@ -1,0 +1,79 @@
+{% extends "auctions/layout.html" %}
+
+{% block title %}: {{ listing.title }}{% endblock %}
+
+{% block body %}
+    <div class="container-fluid listing_box">
+        <div class="row">
+            <div class="col-4 item_img_box">
+                <img class="item_img" src="{{ listing.image }}" width="100%">
+            </div>
+            <div class="col-8">
+                <div class="row">
+                    <div class="col-9">
+                        <p class="listing_title">{{ listing.title }}</p>
+                    </div>
+                    <div class="col-3">
+                        {% if user.is_authenticated %}
+                            watchlist
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <p class="listing_sub_info">{{ listing.category }} | Published by {{ listing.owner.username }} at {{ listing.date.date }}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <p class="listing_description">{{ listing.description }}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-8">
+                        <div class="row">
+                            <div class="col-12">
+                                <p>
+                                    <span class="listing_price_label">CURRENT PRICE: </span>
+                                    <span class="listing_price">Rs. {{ listing.current_price }} </span>
+                                    {% if highest_bid != None %}
+                                        <span class="listing_price_by">(by {{ highest_bid.bidder }})</span>
+                                    {% endif %}
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <p><span class="listing_price_label">BASE PRICE: </span><span class="listing_price">Rs. {{ listing.base_price }}</span></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="row">
+                            {% if user.is_authenticated == False %}
+                                <!--NOT LOGGED IN-->
+                                <a href="{% url 'login' %}"><button class="interact_button">LOGIN NOW <br> (to interact with this item)</button></a>
+                            {% elif user.username == listing.owner.username %}
+                                <!--OWNER ITSELF-->
+                                <a href="#"><button class="interact_button">CLOSE AUCTION <br> [sell @ Rs. {{ listing.current_price }} to {{ highest_bid.bidder }}]</button></a>
+                            {% else %}
+                                <!--CAN BID-->
+                                <form action="{% url 'bid' %}" method="post">
+                                    {% csrf_token %}
+                                    {% if highest_bid != None %}
+                                        <input class="form-control bid_amount_input" type="number" name="bid" placeholder="Bid(min: Rs. {{min_bid}})" value="{{min_bid}}" min="{{ min_bid }}" required>
+                                    {% else %}
+                                        <input class="form-control bid_amount_input" type="number" name="bid" placeholder="Bid(min: Rs. {{listing.current_price}})" value="{{listing.current_price}}" min="{{ listing.current_price }}" required>
+                                    {% endif %}
+                                    <input class="form-control" type="hidden" name="item" placeholder="Item" value="{{ listing.title }}">
+                                    <input class="form-control" type="hidden" name="bidder" placeholder="Bidder" value="{{ user.username }}">
+                                    <input class="btn bid_button" type="submit" value="BID">
+                                </form>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
