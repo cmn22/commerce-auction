@@ -75,7 +75,12 @@
                                 <a href="{% url 'login' %}"><button class="interact_button"><span class="listing_price">LOGIN NOW</span> <br> (to interact with this item)</button></a>
                             {% elif user.username == listing.owner.username %}
                                 <!--OWNER ITSELF-->
-                                <a href="#"><button class="interact_button"><span class="listing_price">CLOSE AUCTION</span> <br> [sell @ Rs. {{ listing.current_price }} to {{ highest_bid.bidder }}]</button></a>
+                                <a href="#"><button class="interact_button">
+                                    <span class="listing_price">CLOSE AUCTION</span>
+                                    {% if highest_bid != None %}
+                                        <br> [sell @ Rs. {{ listing.current_price }} to {{ highest_bid.bidder }}]
+                                    {% endif %}
+                                </button></a>
                             {% else %}
                                 <!--CAN BID-->
                                 <form action="{% url 'bid' %}" method="post">

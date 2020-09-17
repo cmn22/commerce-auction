@@ -17,7 +17,7 @@ class Listing(models.Model):
         ('Games & Toys', 'Games & Toys'),
         ('Motor Vehicle', 'Motor Vehicle'),
         ('Property', 'Property'),
-        ('NONE', 'NONE')
+        ('None', 'None')
     ]
     title = models.CharField(max_length=30)
     description = models.CharField(max_length=1000)

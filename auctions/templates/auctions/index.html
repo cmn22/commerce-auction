@@ -8,6 +8,12 @@
         {% endif %}
     {% endif %}
 
+    {% if type == "CATEGORY_LISTING" %}
+        {% if category_listing_count == 0 %}
+            <h1>No Items in this Category<h1>
+        {% endif %}
+    {% endif %}
+
     {% for item in listings %}
         <a class="a_non_link active_listing_link_box" href="{% url 'listing' item.id %}">
             <div class="container-fluid active_listing_box">
@@ -52,5 +58,7 @@
                 </div>
             </div>
         </a>
+    {% empty %}
+        <h1>No Items<h1>
     {% endfor %}
 {% endblock %}

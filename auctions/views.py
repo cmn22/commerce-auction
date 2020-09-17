@@ -4,6 +4,9 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
 
+from django.db.models.functions import Lower
+from django.db.models import F, Func
+
 from .models import User, Listing, Bid, Comment, Watchlist
 
 from django.contrib.auth.decorators import login_required
@@ -79,7 +82,10 @@ def create_listing(request):
         listing.description = request.POST["description"]
         listing.base_price = request.POST["base_price"]
         listing.current_price = listing.base_price
-        listing.image = request.POST["img_url"]
+        if not request.POST["img_url"]:
+            listing.image = "/static/auctions/images/no_image.png"
+        else:
+            listing.image = request.POST["img_url"]
         listing.category = request.POST["category"]
         listing.active = True
         listing.save()
@@ -149,6 +155,14 @@ def watchlist(request):
     })
 
 @login_required
+def mylistings(request):
+    mylistings = Listing.objects.filter(owner=User.objects.get(username = request.user.get_username())).all()
+    return render(request, "auctions/index.html",{
+        "listings": mylistings,
+        "page_heading": "MY LISTINGS"
+    })
+
+@login_required
 def bid(request):
     if request.method == "POST":
         listing = Listing.objects.get(title = request.POST["item"])
@@ -164,4 +178,22 @@ def bid(request):
 
     return render(request, "auctions/error.html",{
         "message": "You cannot access this URL using a GET request."
+    })
+
+def category(request, category_name):
+
+    category_items = Listing.objects.filter(category__iexact=category_name).all()
+
+    print("CATEGORY ITEMS:", category_items)
+    return render(request, "auctions/index.html",{
+        "listings": category_items,
+        "page_heading": category_name,
+        "type": "CATEGORY_LISTING",
+        "category_listing_count": category_items.count()
+    })
+
+def closed(request):
+    return render(request, "auctions/index.html",{
+        "listings": Listing.objects.filter(active=False).all(),
+        "page_heading": "CLOSED LISTINGS"
     })

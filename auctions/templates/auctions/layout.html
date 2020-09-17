@@ -27,8 +27,8 @@
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
                             <a class="dropdown-item">Hello, {{ user.username }}</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">My Watchlist</a>
-                            <a class="dropdown-item" href="#">My Listings</a>
+                            <a class="dropdown-item" href="{% url 'watchlist' %}">My Watchlist</a>
+                            <a class="dropdown-item" href="{% url 'mylistings' %}">My Listings</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="{% url 'logout' %}">LOGOUT</a>
                         </div>
@@ -56,18 +56,18 @@
                                 Categories
                             </a>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                <a class="dropdown-item" href="#">Fashion</a>
-                                <a class="dropdown-item" href="#">Furniture</a>
-                                <a class="dropdown-item" href="#">Electronics</a>
-                                <a class="dropdown-item" href="#">Games & Toys</a>
-                                <a class="dropdown-item" href="#">Motor Vehicle</a>
-                                <a class="dropdown-item" href="#">Property</a>
-                                <a class="dropdown-item" href="#">Miscellaneous</a>
+                                <a class="dropdown-item" href="{% url 'category' category_name='fashion' %}">Fashion</a>
+                                <a class="dropdown-item" href="{% url 'category' category_name='furniture' %}">Furniture</a>
+                                <a class="dropdown-item" href="{% url 'category' category_name='electronics' %}">Electronics</a>
+                                <a class="dropdown-item" href="{% url 'category' category_name='games & toys' %}">Games & Toys</a>
+                                <a class="dropdown-item" href="{% url 'category' category_name='motor vehicle' %}">Motor Vehicle</a>
+                                <a class="dropdown-item" href="{% url 'category' category_name='property' %}">Property</a>
+                                <a class="dropdown-item" href="{% url 'category' category_name='none' %}">Miscellaneous</a>
                             </div>
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link a_non_link navigating_link" href="#">Closed Listings</a>
+                        <a class="nav-link a_non_link navigating_link" href="{% url 'closed_listings' %}">Closed Listings</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link a_non_link navigating_link" href="{% url 'create' %}">Create Listing</a>
