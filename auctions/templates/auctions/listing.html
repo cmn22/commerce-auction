@@ -2,6 +2,8 @@
 
 {% block title %}: {{ listing.title }}{% endblock %}
 
+{% load static %}
+
 {% block body %}
     <div class="container-fluid listing_box">
         <div class="row">
@@ -15,7 +17,25 @@
                     </div>
                     <div class="col-3">
                         {% if user.is_authenticated %}
-                            watchlist
+                            {% if watchlist == False %}
+                                <form action="{% url 'watchlist' %}" method="post">
+                                    {% csrf_token %}
+                                    <input class="form-control" type="hidden" name="user" placeholder="User" value="{{ user.username }}">
+                                    <input class="form-control" type="hidden" name="watch_item" placeholder="Watch Item" value="{{ listing.title }}">
+                                    <input class="form-control" type="hidden" name="watchlist_exe" placeholder="Add Item" value="add">
+                                    <!--Black Star-->
+                                    <input class="watchlist_star" type="image" title="Add to Watchlist" alt="Not in Wishlist" src="{% static 'auctions/images/star_black.png' %}">
+                                </form>
+                            {% else %}
+                                <form action="{% url 'watchlist' %}" method="post">
+                                    {% csrf_token %}
+                                    <input class="form-control" type="hidden" name="user" placeholder="User" value="{{ user.username }}">
+                                    <input class="form-control" type="hidden" name="watch_item" placeholder="Watch Item" value="{{ listing.title }}">
+                                    <input class="form-control" type="hidden" name="watchlist_exe" placeholder="Remove Item" value="remove">
+                                    <!--Yellow Star-->
+                                    <input class="watchlist_star" type="image" title="Remove from Watchlist" alt="In Wishlist" src="{% static 'auctions/images/star_yellow.png' %}">
+                                </form>
+                            {% endif %}
                         {% endif %}
                     </div>
                 </div>
@@ -52,10 +72,10 @@
                         <div class="row">
                             {% if user.is_authenticated == False %}
                                 <!--NOT LOGGED IN-->
-                                <a href="{% url 'login' %}"><button class="interact_button">LOGIN NOW <br> (to interact with this item)</button></a>
+                                <a href="{% url 'login' %}"><button class="interact_button"><span class="listing_price">LOGIN NOW</span> <br> (to interact with this item)</button></a>
                             {% elif user.username == listing.owner.username %}
                                 <!--OWNER ITSELF-->
-                                <a href="#"><button class="interact_button">CLOSE AUCTION <br> [sell @ Rs. {{ listing.current_price }} to {{ highest_bid.bidder }}]</button></a>
+                                <a href="#"><button class="interact_button"><span class="listing_price">CLOSE AUCTION</span> <br> [sell @ Rs. {{ listing.current_price }} to {{ highest_bid.bidder }}]</button></a>
                             {% else %}
                                 <!--CAN BID-->
                                 <form action="{% url 'bid' %}" method="post">
@@ -67,7 +87,7 @@
                                     {% endif %}
                                     <input class="form-control" type="hidden" name="item" placeholder="Item" value="{{ listing.title }}">
                                     <input class="form-control" type="hidden" name="bidder" placeholder="Bidder" value="{{ user.username }}">
-                                    <input class="btn bid_button" type="submit" value="BID">
+                                    <input class="btn bid_button listing_price" type="submit" value="BID">
                                 </form>
                             {% endif %}
                         </div>

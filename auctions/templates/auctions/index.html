@@ -1,7 +1,12 @@
 {% extends "auctions/layout.html" %}
 
 {% block body %}
-    <h2>Active Listings</h2>
+    <h2>{{ page_heading }}</h2>
+    {% if page_heading == "WATCHLIST LISTINGS" %}
+        {% if watchlist_items_count == 0 %}
+            <h1>No Items in your Watchlist<h1>
+        {% endif %}
+    {% endif %}
 
     {% for item in listings %}
         <a class="a_non_link active_listing_link_box" href="{% url 'listing' item.id %}">
