@@ -1,10 +1,30 @@
 {% extends "auctions/layout.html" %}
 
-{% block title %}: {{ listing.title }}{% endblock %}
-
 {% load static %}
 
+{% block title %}: {{ listing.title }}{% endblock %}
+
 {% block body %}
+    {% if listing.active == False %}
+    <div class="closed_overlay">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-6">
+                    <img class="closed_sign" src="{% static 'auctions/images/closed_sign.png' %}">
+                </div>
+                <div class="col-6">
+                    {% if listing.owner.username == user.username %}
+                        <p class="closed_message">Your {{ listing.title }} was SOLD!<br>(to {{ highest_bid.bidder.username }} for Rs. {{ listing.current_price }})</p>
+                    {% elif highest_bid.bidder.username == user.username %}
+                        <p class="closed_message">Congratulations!!!<br>You won this auction for Rs. {{ highest_bid.bid }}</p>
+                    {% else %}
+                        <p class="closed_message">Sorry, {{ listing.title }} was SOLD!<br>(to {{ highest_bid.bidder.username }} for Rs. {{ listing.current_price }})</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
     <div class="container-fluid listing_box">
         <div class="row">
             <div class="col-4 item_img_box">
@@ -75,12 +95,16 @@
                                 <a href="{% url 'login' %}"><button class="interact_button"><span class="listing_price">LOGIN NOW</span> <br> (to interact with this item)</button></a>
                             {% elif user.username == listing.owner.username %}
                                 <!--OWNER ITSELF-->
-                                <a href="#"><button class="interact_button">
-                                    <span class="listing_price">CLOSE AUCTION</span>
-                                    {% if highest_bid != None %}
-                                        <br> [sell @ Rs. {{ listing.current_price }} to {{ highest_bid.bidder }}]
-                                    {% endif %}
-                                </button></a>
+                                <form action="{% url 'close' %}" method="post">
+                                    {% csrf_token %}
+                                    <input class="form-control" type="hidden" name="item" placeholder="Item" value="{{ listing.title }}">
+                                    <button type="submit" class="interact_button">
+                                        <span class="listing_price">CLOSE AUCTION</span>
+                                        {% if highest_bid != None %}
+                                            <br> [sell @ Rs. {{ listing.current_price }} to {{ highest_bid.bidder }}]
+                                        {% endif %}
+                                    </button>
+                                </form>
                             {% else %}
                                 <!--CAN BID-->
                                 <form action="{% url 'bid' %}" method="post">

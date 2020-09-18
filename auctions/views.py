@@ -180,6 +180,19 @@ def bid(request):
         "message": "You cannot access this URL using a GET request."
     })
 
+@login_required
+def close(request):
+    if request.method == "POST":
+        listing = Listing.objects.get(title = request.POST["item"])
+        listing.active = False
+        listing.save()
+        url = "listing/" + str(listing.id)
+        return HttpResponseRedirect(url)
+
+    return render(request, "auctions/error.html",{
+        "message": "You cannot access this URL using a GET request."
+    })
+
 def category(request, category_name):
 
     category_items = Listing.objects.filter(category__iexact=category_name).all()
