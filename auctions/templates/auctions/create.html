@@ -3,37 +3,42 @@
 {% block title %}: Create New Item{% endblock %}
 
 {% block body %}
-    <h2>Create New Item</h2>
 
     {% if message %}
-        <div>{{ message }}</div>
+        <div class="center_message">{{ message }}</div>
+        <br>
     {% endif %}
 
-    <form action="{% url 'create' %}" method="post">
-        {% csrf_token %}
-        <div class="form-group">
-            <input autofocus class="form-control" type="text" name="title" placeholder="Title" maxlength="30" required>
-        </div>
-        <div class="form-group">
-            <input class="form-control" type="text" name="description" placeholder="Something about the product..." maxlength="1000" required>
-        </div>
-        <div class="form-group">
-            <input class="form-control" type="number" name="base_price" placeholder="Starting Price" min="1" required>
-        </div>
-        <div class="form-group">
-            <input class="form-control" type="url" name="img_url" placeholder="URL of Sample image">
-        </div>
-        <select name="category" required>
-            <option value"Collectibles">Collectibles</option>
-            <option value"Electronics">Electronics</option>
-            <option value"Fashion">Fashion</option>
-            <option value"Furniture">Furniture</option>
-            <option value"Games & Toys">Games & Toys</option>
-            <option value"Motor Vehicle">Motor Vehicle</option>
-            <option value"Property">Property</option>
-            <option value"NONE" selected="selected">NONE</option>
-        </select>
-        <input class="btn btn-primary" type="submit" value="Post Item">
-    </form>
+    <div class="create_box">
+        <h2>Create New Item</h2>
+        <form action="{% url 'create' %}" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <input autofocus class="form-control" type="text" name="title" placeholder="Title" maxlength="30" required>
+            </div>
+            <div class="form-group">
+                <textarea class="form-control" name="description" placeholder="Something about the product..." maxlength="1000" rows="2" required></textarea>
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="number" name="base_price" placeholder="Starting Price" min="1" required>
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="url" name="img_url" placeholder="URL of Sample image">
+            </div>
+            <div class="form-group">
+                <select class="form-control" name="category" required>
+                    <option value"Collectibles">Collectibles</option>
+                    <option value"Electronics">Electronics</option>
+                    <option value"Fashion">Fashion</option>
+                    <option value"Furniture">Furniture</option>
+                    <option value"Games & Toys">Games & Toys</option>
+                    <option value"Motor Vehicle">Motor Vehicle</option>
+                    <option value"Property">Property</option>
+                    <option value"NONE" selected="selected">NONE</option>
+                </select>
+            </div>
+            <input class="btn btn-primary bid_button" type="submit" value="Post Item">
+        </form>
+    </div>
 
 {% endblock %}

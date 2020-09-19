@@ -142,7 +142,7 @@
                     {% csrf_token %}
                     <div class="form-group">
                         <label for="comment">Write a comment</label>
-                        <textarea class="form-control" name="comment" placeholder="Share your thoughts..." rows="2"></textarea>
+                        <textarea class="form-control" name="comment" placeholder="Share your thoughts..." maxlength="1000" rows="2"></textarea>
                     </div>
                     <input class="form-control" type="hidden" name="item" placeholder="Item" value="{{ listing.title }}">
                     <input class="form-control" type="hidden" name="commentor" placeholder="Commentor" value="{{ user.username }}">
