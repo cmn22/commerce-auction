@@ -225,3 +225,9 @@ h2{
     margin-top: 5px;
     width: 200px;
 }
+
+.white_line{
+    background-color: #ccc;
+    height: 1px;
+    border: none;
+}

@@ -103,8 +103,6 @@ def listing(request, listing_id):
     watchlist = False
     try:
         user = User.objects.get(username = request.user.get_username())
-        print(user)
-        #print("USERNAME",user)
         try:
             watchlist_obj = Watchlist.objects.filter(wisher=user, item=listing)
             if watchlist_obj.count() != 0:
@@ -118,11 +116,14 @@ def listing(request, listing_id):
     print("Watchlist = ",watchlist)
         #print("No user")
 
+    comments = Comment.objects.filter(item=listing).all()
+
     return render(request, "auctions/listing.html",{
         "listing": listing,
         "min_bid": listing.current_price+1,
         "highest_bid": highest_bid,
-        "watchlist": watchlist
+        "watchlist": watchlist,
+        "comments": comments
     })
 
 
@@ -209,4 +210,21 @@ def closed(request):
     return render(request, "auctions/index.html",{
         "listings": Listing.objects.filter(active=False).all(),
         "page_heading": "CLOSED LISTINGS"
+    })
+
+@login_required
+def comment(request):
+    if request.method == "POST":
+        listing = Listing.objects.get(title = request.POST["item"])
+        commentor = User.objects.get(username = request.POST["commentor"])
+        new_comment = Comment()
+        new_comment.item = listing
+        new_comment.commentor = commentor
+        new_comment.comment = request.POST["comment"]
+        new_comment.save()
+        url = "listing/" + str(listing.id)
+        return HttpResponseRedirect(url)
+
+    return render(request, "auctions/error.html",{
+        "message": "You cannot access this URL using a GET request."
     })

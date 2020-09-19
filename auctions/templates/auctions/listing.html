@@ -125,4 +125,47 @@
             </div>
         </div>
     </div>
+    <br>
+    <br>
+    <br>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <h1>Comments</h1>
+                <hr class="white_line">
+            </div>
+        </div>
+        {% if user.is_authenticated == True %}
+        <div class="row">
+            <div class="col-12">
+                <form action="{% url 'comment' %}" method="post">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="comment">Write a comment</label>
+                        <textarea class="form-control" name="comment" placeholder="Share your thoughts..." rows="2"></textarea>
+                    </div>
+                    <input class="form-control" type="hidden" name="item" placeholder="Item" value="{{ listing.title }}">
+                    <input class="form-control" type="hidden" name="commentor" placeholder="Commentor" value="{{ user.username }}">
+                    <button type="submit" class="btn btn-primary bid_button">Comment</button>
+                </form>
+                <hr class="white_line">
+            </div>
+        </div>
+        {% endif %}
+        {% for comment in comments %}
+        <div class="row">
+            <div class="col-12">
+                <span class="listing_price_label">{{ comment.commentor }} said... </span><br>
+                <span class="listing_price_by">{{ comment.comment }} </span>
+            </div>
+        </div>
+        <hr class="white_line">
+        {% empty %}
+        <div class="row">
+            <div class="col-12">
+                <p>No Comments</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
 {% endblock %}
