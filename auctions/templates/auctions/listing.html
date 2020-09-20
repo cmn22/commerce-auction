@@ -5,6 +5,8 @@
 {% block title %}: {{ listing.title }}{% endblock %}
 
 {% block body %}
+
+    <!--Overlay for Closed Listings-->
     {% if listing.active == False %}
     <div class="closed_overlay">
         <div class="container-fluid">
@@ -14,17 +16,25 @@
                 </div>
                 <div class="col-6">
                     {% if listing.owner.username == user.username %}
+                        <!--Logged in user is the Owner of the closed listing-->
                         <p class="closed_message">Your {{ listing.title }} was SOLD!<br>(to {{ highest_bid.bidder.username }} for Rs. {{ listing.current_price }})</p>
+
                     {% elif highest_bid.bidder.username == user.username %}
+                        <!--Logged in user is the Winner of the closed listing-->
                         <p class="closed_message">Congratulations!!!<br>You won this auction for Rs. {{ highest_bid.bid }}</p>
+
                     {% else %}
+                        <!--Logged in user is a Observer of the closed listing-->
                         <p class="closed_message">Sorry, {{ listing.title }} was SOLD!<br>(to {{ highest_bid.bidder.username }} for Rs. {{ listing.current_price }})</p>
+
                     {% endif %}
                 </div>
             </div>
         </div>
     </div>
     {% endif %}
+
+    <!--Listing Information-->
     <div class="container-fluid listing_box">
         <div class="row">
             <div class="col-4 item_img_box">
@@ -38,6 +48,7 @@
                     <div class="col-3">
                         {% if user.is_authenticated %}
                             {% if watchlist == False %}
+                                <!--Listing NOT present in user's Watchlist-->
                                 <form action="{% url 'watchlist' %}" method="post">
                                     {% csrf_token %}
                                     <input class="form-control" type="hidden" name="user" placeholder="User" value="{{ user.username }}">
@@ -47,6 +58,7 @@
                                     <input class="watchlist_star" type="image" title="Add to Watchlist" alt="Not in Wishlist" src="{% static 'auctions/images/star_black.png' %}">
                                 </form>
                             {% else %}
+                                <!--Listing IS present in user's Watchlist-->
                                 <form action="{% url 'watchlist' %}" method="post">
                                     {% csrf_token %}
                                     <input class="form-control" type="hidden" name="user" placeholder="User" value="{{ user.username }}">
@@ -136,6 +148,7 @@
             </div>
         </div>
         {% if user.is_authenticated == True %}
+        <!--User is logged in, so can comment-->
         <div class="row">
             <div class="col-12">
                 <form action="{% url 'comment' %}" method="post">
@@ -152,7 +165,9 @@
             </div>
         </div>
         {% endif %}
+
         {% for comment in comments %}
+        <!--To display comments on the listing-->
         <div class="row">
             <div class="col-12">
                 <span class="listing_price_label">{{ comment.commentor }} said... </span><br>
@@ -160,12 +175,15 @@
             </div>
         </div>
         <hr class="white_line">
+
         {% empty %}
+        <!--If no comments on the listing-->
         <div class="row">
             <div class="col-12">
                 <p>No Comments</p>
             </div>
         </div>
+        
         {% endfor %}
     </div>
 {% endblock %}

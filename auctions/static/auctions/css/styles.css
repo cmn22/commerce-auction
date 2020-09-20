@@ -1,3 +1,4 @@
+/*Linking Fonts*/
 @import url('https://fonts.googleapis.com/css2?family=BioRhyme:wght@800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,100;1,100&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Antic+Slab&display=swap');
@@ -72,7 +73,9 @@ h2{
     text-align: center;
 }
 
+
 /*---------- FORMS ----------*/
+
 .form_box{
     border: solid #FBEEC1;
     border-radius: 20px;
@@ -86,7 +89,9 @@ h2{
     background-color: #FBEEC1;
 }
 
+
 /*---------- CREATE PAGE ----------*/
+
 .create_box{
     border: solid #FBEEC1;
     border-radius: 20px;
@@ -95,6 +100,7 @@ h2{
     margin: auto;
     text-align: center;
 }
+
 
 /*---------- INDEX PAGE ----------*/
 
@@ -164,6 +170,7 @@ h2{
     font-family: 'BioRhyme', sans-serif;
     font-size: 20px;
 }
+
 
 /*---------- LISTING ----------*/
 
@@ -263,7 +270,9 @@ h2{
     border: none;
 }
 
+
 /*--------------------ABOUT PAGE----------------------*/
+
 @media (min-width: 577px) {
     img#contactimg {
         width: 100%;

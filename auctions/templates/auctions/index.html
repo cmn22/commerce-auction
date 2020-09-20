@@ -1,7 +1,9 @@
 {% extends "auctions/layout.html" %}
 
 {% block body %}
+
     <h2>{{ page_heading }}</h2>
+
     {% if page_heading == "WATCHLIST LISTINGS" %}
         {% if watchlist_items_count == 0 %}
             <h1>No Items in your Watchlist<h1>
@@ -58,7 +60,6 @@
                 </div>
             </div>
         </a>
-    {% empty %}
-        <h1>No Items<h1>
+
     {% endfor %}
 {% endblock %}
