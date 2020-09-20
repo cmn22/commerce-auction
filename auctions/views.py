@@ -228,3 +228,6 @@ def comment(request):
     return render(request, "auctions/error.html",{
         "message": "You cannot access this URL using a GET request."
     })
+
+def about(request):
+    return render(request, "auctions/about.html")

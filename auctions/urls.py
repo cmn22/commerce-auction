@@ -15,5 +15,6 @@ urlpatterns = [
     path("closedlistings", views.closed, name="closed_listings"),
     path("bid", views.bid, name="bid"),
     path("close", views.close, name="close"),
-    path("comment", views.comment, name="comment")
+    path("comment", views.comment, name="comment"),
+    path("about", views.about, name="about")
 ]

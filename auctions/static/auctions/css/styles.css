@@ -262,3 +262,23 @@ h2{
     height: 1px;
     border: none;
 }
+
+/*--------------------ABOUT PAGE----------------------*/
+@media (min-width: 577px) {
+    img#contactimg {
+        width: 100%;
+        padding-top: 0.8em;
+        float: right;
+    }
+}
+
+@media (max-width: 576px) {
+    #contactimg{
+        display: none;
+    }
+}
+
+.fa:hover {
+    opacity: 0.7;
+    cursor: pointer;
+}
