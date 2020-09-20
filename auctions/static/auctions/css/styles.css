@@ -27,20 +27,20 @@ body {
 }
 
 .nav_heading:link, .nav_heading:visited{
-    color: #e85a4f;
+    color: #E85A4F;
     font-family: 'BioRhyme', sans-serif;
     font-size: 30px;
 }
 
 .dropdown-divider{
-    background-color: #e85a4f;
+    background-color: #E85A4F;
     height: 2px;
 }
 
 .navigation_bar_no_user_ul{
     font-family: 'BioRhyme', sans-serif;
     font-size: 20px;
-    color: #e85a4f;
+    color: #E85A4F;
 }
 
 .navigation_bar_no_user_a:link, .navigation_bar_no_user_a:visited{
@@ -48,7 +48,7 @@ body {
 }
 
 .below_navbar{
-    background-color: #edf5e1;
+    background-color: #EDF5E1;
     font-family: 'IBM Plex Serif', serif;
     font-weight: bold;
     margin-bottom: 30px;
@@ -69,7 +69,7 @@ h2{
 .center_message{
     margin: auto;
     width: 60%;
-    color: #8ee4af;
+    color: #8EE4AF;
     text-align: center;
 }
 
@@ -109,10 +109,10 @@ h2{
 }
 
 .active_listing_box{
-    background-color: #8ee4af;  /*for red: ee4c7c  da7b93 for Title: EDf5E1*/
+    background-color: #8EE4AF;  /*for red: ee4c7c  da7b93 for Title: EDf5E1*/
     border: solid #116466;  /*FC4445*/
     border-radius: 10px;
-    color: #e85a4f;
+    color: #E85A4F;
     transition: transform .2s;
     margin: 0 auto;
     opacity: 0.8;
@@ -137,7 +137,7 @@ h2{
 .listing_title{
     font-family: 'BioRhyme', sans-serif;
     font-size: 50px;
-    color: #e85a4f;
+    color: #E85A4F;
     text-decoration: underline;
 }
 
@@ -159,7 +159,7 @@ h2{
 }
 
 .listing_price_row{
-    background-color: #e85a4f;
+    background-color: #E85A4F;
     color: white;
 }
 
@@ -233,7 +233,7 @@ h2{
 .listing_price_label{
     font-family: 'BioRhyme', sans-serif;
     font-size: 18px;
-    color: #e85a4f;
+    color: #E85A4F;
 }
 
 .listing_price{
@@ -242,7 +242,7 @@ h2{
 }
 
 .interact_button{
-    background-color: #e85a4f;
+    background-color: #E85A4F;
     color: white;
     font-family: 'Antic Slab', serif;
     border: none;
@@ -255,7 +255,7 @@ h2{
 }
 
 .bid_button{
-    background-color: #e85a4f;
+    background-color: #E85A4F;
     color: white;
     font-family: 'Antic Slab', serif;
     border: none;
