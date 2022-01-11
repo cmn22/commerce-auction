@@ -17,7 +17,7 @@
 <div name="introduction">
 
 ## Introduction
-Creating a web application that is acts like a online E-Commerce Auction website where users can publish listings, add listings to their watchlist, bid on a listing and even comment on them.
+Creating an E-Commerce Auction web application where users can publish listings, add listings to their watchlist, bid on a listing and even comment on them.
 
 
 <br/>  
@@ -111,13 +111,13 @@ The web application uses 5 models as follows:
 
 2. **Listing**: This model will store information regarding a listing. The fields are title, description, base price, current price, image(to save image URL of listing), category(type of listing), owner(Foreign Key to User), active(status of the listing), date.  
 
-3. **Bid:** This model is used to registers bids made by users. It contains information such as bidder(who is bidding - Foreign Key to User), bid(bid amount) and item(on which bid is being made - Foreign Key to Listing)  
+3. **Bid:** This model is used to register bids made by users. It contains information such as bidder(who is bidding - Foreign Key to User), bid(bid amount) and item(on which bid is being made - Foreign Key to Listing)  
 
 4. **Comment:** This model stores all the comments made by various users on the listings. It stores listing(on which comment is made - Foreign Key to Listing), commentor(who made the comment - Foreign Key to User), comment, date(of comment).  
 
 5. **Watchlist:** This models helps in keep tracking of the watchlist listings for users. It does so by storing the wisher(who is watching the listing) and the item(the listing that is being watched).  
 
-<img src="" width=100%>  
+<img src="auctions/static/auctions/images/ss_models.png" width=100%> 
 <br/>
 <br/>
 
