@@ -8,6 +8,26 @@
 
 
 ## Table Of Contents
+- [Introduction](#introduction)
+- [Setup](#setup)
+- [About the Application](#about-the-application)
+  - [Models](#models)
+  - [Home Page](#home-page)
+  - [Registration Page](#registration-page)
+  - [Login Page](#login)
+  - [Logout](#logout)
+  - [Create Listing](#create-listing)
+  - [Listing Page](#listing-page)
+  - [Bids](#bids)
+  - [Comments](#comments)
+  - [Watchlist Page](#watchlist)
+  - [My Listing Page](#my-listing-page)
+  - [Closed Listing Page](#closed-listing-page)
+  - [Closed Listing](#closed-listing)
+  - [Category](#category)
+  - [About Us Page](#about-us-page)
+- [Author](#author)
+
 
 
 <br/>  
