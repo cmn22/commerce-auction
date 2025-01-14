@@ -107,11 +107,15 @@ pip3 install -r requirements.txt
     ```
     python3 manage.py migrate
     ```
-3. Runserver (on port 8000)
+3. Collect Static
+    ```
+    python3 manage.py collectstatic
+    ```
+4. Runserver (on port 8000)
     ```
     python3 manage.py runserver 0.0.0.0:8000
     ```
-4. Open the corresponding address on a web browser and your application should be up and running.
+5. Open the corresponding address on a web browser and your application should be up and running.
 
 
 <br/>
