@@ -57,6 +57,7 @@ git clone https://github.com/cmn22/mail
 <br/>
 
 ### Creating a virtual environment 
+
 #### For Unix/macOS
 1. Installing virtualenv
     ```
@@ -90,6 +91,8 @@ git clone https://github.com/cmn22/mail
 <br/>
 
 ### Installing required dependencies
+NOTE: Use Python3.9 to mitigate package version issues.
+
 Install the required packages as stated in requirements.txt file
 ```
 pip3 install -r requirements.txt
